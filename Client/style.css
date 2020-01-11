@@ -1,0 +1,148 @@
+body {
+	background: #bdc3c7;  /* old browsers */
+  background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);/* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2c3e50, #bdc3c7);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.wrapper {
+	max-width: 80%;
+	margin: 0 auto;
+	margin-top: 10px;
+	position: relative;
+}
+
+h1 {
+	text-align: center;
+	color: #fff;
+}
+
+img {
+	max-width: 86%;
+	height: auto;
+	margin-top: 25px;
+}
+
+.field {
+	width: 10%;
+	/* margin : haut droite bas gauche, ou haut/bas droite/gauche */
+	margin: 0.5% 0.5%;
+	height: 150px;
+	perspective: 500px;
+	border-radius: 8px;
+	float: left;
+	cursor: pointer;
+}
+
+.inner-wrap {
+	width: 100%;
+	height: 100%;
+	/* cible toutes les animations, durée : 0.6s */
+	transition: all 0.6s;.
+	-webkit-transition: all 0.6s;
+	transform-style: preserve-3d;
+}
+
+.back {
+	background-image: linear-gradient(to right bottom, #1ad1e5, #00ded2, #00e8aa, #58ec6f, #a8eb12);
+	width: 100%;
+	height: 100%;
+	border-radius: 8px;
+}
+
+.flipped {
+	/* On veut que la carte se retourne */
+	transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+}
+
+.front, .back {
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.front {
+	transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+	text-align: center;
+	border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+.record {
+	color: #fff;
+	font-size: 26px;
+}
+
+.result p {
+  font-size: 46px;
+  font-weight: 100;
+  color: #fff;
+}
+
+.result {
+  text-align: center;
+  font-size: 46px;
+  color: #fff
+}
+
+/* Cible le p dans l'élément classe wrapper */
+.wrapper p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Progressbar */
+#myProgress {
+  margin: 25px auto;
+	border-radius: 5px;
+  width: 60%;
+  background-color: #bdb7b7;
+}
+
+#myBar {
+	border-radius: 5px;
+  width: 1%;
+  height: 30px;
+  background-color: #0c9aa9;
+}
+
+/* Media queries */
+@media (max-width: 1080px) {
+	/* Modifie le style sur .table et .field quand la fenêtre arrive à 1080px de large */
+	.table {
+ 		margin-left: 10%;
+ 	}
+
+	.field {
+	 	width: 14%;
+	 	height: 140px;
+ 	}
+}
+
+@media (max-width: 800px) {
+	/* Modifie le style sur img et .field quand la fenêtre arrive à 800px de large */
+  .field {
+	 	width: 20%;
+	 	height: 125px;
+ 	}
+
+ 	img {
+ 		margin-top: 9px;
+ 	}
+}
+
+@media (max-width: 600px) {
+	img {
+ 		margin-top: 30px;
+ 	}
+}
+
