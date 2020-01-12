@@ -254,6 +254,32 @@ $(document).ready(function() {
 		}, 800);
 	}
 
+
+	// Permet de convertir les secondes en minutes + secondes
+	function secondsToMs(time) {
+		// On s'assure que time est bien de type Number
+	    time = Number(time);
+	    // On convertit nos secondes en minutes
+	    var m = Math.floor(time % 3600 / 60);
+	    // On garde les secondes restantes
+	    var s = Math.floor(time % 3600 % 60);
+
+	    var mDisplay = m > 0 ? m + ' min ' : "";
+
+	    // Equivaut à :
+	    // var mDisplay;
+	    // if (m > 0) {
+	    // 	mDisplay = m + ' min ';
+	    // } else {
+	    // 	mDisplay = "";
+	    // }
+
+	    var sDisplay = s > 0 ? s : "";
+
+	    return  mDisplay + sDisplay;
+	}
+
+
 	// Permet de récupérer le temps record
 	function getTimes() {
 		var request = new XMLHttpRequest();
@@ -262,17 +288,19 @@ $(document).ready(function() {
 
 		request.onreadystatechange = function() {
 			var name = '';
-       // Quand tout est ok (state 4 et status 200) :
-       if (this.readyState == 4 && this.status == 200) {
+        // Quand tout est ok (state 4 et status 200) :
+        if (this.readyState == 4 && this.status == 200) {
+        	// Convertit les secondes en minutes/secondes
+       		var minToMinSec = secondsToMs(this.response.newTime);
 
-       	// On peut utiliser le retour de notre API dans le DOM
-       	$('.record').html('Record : ' + this.response.newTime + ' secondes');
+       		// On peut utiliser le retour de notre API dans le DOM
+       		$('.record').html('Record : ' + minToMinSec);
 
-       	// On vérifie qu'il y a un nom avec ce temps
-       	if (this.response.name != "") {
-       		name = this.response.name;
-       		$('.record').append(' (' + name + ')');
-       	}
+       		// On vérifie qu'il y a un nom avec ce temps
+       		if (this.response.name != "") {
+       			name = this.response.name;
+       			$('.record').append(' (' + name + ')');
+       		}
        }
      }
 		request.send();

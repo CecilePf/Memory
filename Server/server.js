@@ -45,7 +45,7 @@ app.post('/api/save', function(req, res) {
   // Création d'un nouveau document destiné à la DB
   var newGameTime = new GameTime(req.body);
 
-  //enregistrement dans la DB
+  // enregistrement dans la DB
   newGameTime.save(function(err, result) {
     if (err) {
       res.send('error : ', err);
@@ -53,6 +53,8 @@ app.post('/api/save', function(req, res) {
       res.send(result);
     }
   });
+  // La fonction save peut prendre en paramètre une fonction de callback :
+  // elle sera executée lorsque le save en db sera fait.
 });
 
 // Route pour récupérer le temps record
@@ -60,7 +62,7 @@ app.get('/api/times', function(req, res) {
   var newTime = 200;
   var name = '';
   GameTime.find({}, function(err, result) {
-    // On cherche le meilleur temps
+    // Fonction exécutée une fois que les résultats sont trouvés. On cherche le meilleur temps :
     result.forEach(function(time) {
       if (time.seconds < newTime) {
         newTime = time.seconds;
@@ -73,4 +75,5 @@ app.get('/api/times', function(req, res) {
 
 });
 
+// Ici on lance le serveur sur le port 3000
 app.listen(3000);
