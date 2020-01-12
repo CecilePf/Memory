@@ -16,7 +16,8 @@ h1 {
 	color: #fff;
 }
 
-img {
+/* images contenues dans les éléments de classe front */
+.front img {
 	max-width: 86%;
 	height: auto;
 	margin-top: 25px;
@@ -116,6 +117,13 @@ img {
 }
 
 /* Media queries */
+/* Au dessus de 1080px, on diminue la largeur des images contenues dans les éléments de classe front */
+@media (min-width: 1780px) {
+	.front img {
+ 		max-width: 50%;
+ 	}
+}
+
 @media (max-width: 1080px) {
 	/* Modifie le style sur .table et .field quand la fenêtre arrive à 1080px de large */
 	.table {
@@ -129,19 +137,19 @@ img {
 }
 
 @media (max-width: 800px) {
-	/* Modifie le style sur img et .field quand la fenêtre arrive à 800px de large */
+	/* Modifie le style sur les img et .field quand la fenêtre arrive à 800px de large */
   .field {
 	 	width: 20%;
 	 	height: 125px;
  	}
 
- 	img {
+ 	.front img {
  		margin-top: 9px;
  	}
 }
 
 @media (max-width: 600px) {
-	img {
+	.front img {
  		margin-top: 30px;
  	}
 }
