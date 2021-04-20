@@ -29,7 +29,7 @@ app.use(express.static('../Client'));
 
 // Sinon :
 // ici on se connecte à la base de données en ligne
-mongoose.connect('mongodb+srv://admin:admin@cluster0-cac6v.mongodb.net/memory_db?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://dbMemory:admin@cluster0.tn6kd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   }, function(err) {
